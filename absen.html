@@ -1,49 +1,74 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Absen Sederhana</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Login Guru</title>
+  <style>
+    body {
+      background: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0066cc;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0052a3;
+    }
+
+    .footer-text {
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-    <h2>Form Absen</h2>
-    <form id="absenForm">
-        <label>Nama: <input type="text" id="nama" required></label>
-        <button type="submit">Absen</button>
+  <div class="login-container">
+    <h2>Login Guru</h2>
+    <form action="/login" method="post">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
     </form>
-    <table id="absenTable">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Waktu Absen</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
-    <script>
-        const absenForm = document.getElementById('absenForm');
-        const absenTable = document.getElementById('absenTable').getElementsByTagName('tbody')[0];
-        let nomor = 1;
-
-        absenForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const nama = document.getElementById('nama').value.trim();
-            if(nama === "") return;
-
-            const row = absenTable.insertRow();
-            row.insertCell(0).innerText = nomor++;
-            row.insertCell(1).innerText = nama;
-            row.insertCell(2).innerText = new Date().toLocaleString('id-ID');
-
-            absenForm.reset();
-        });
-    </script>
+    <div class="footer-text">Forgot password? Contact admin.</div>
+  </div>
 </body>
 </html>
